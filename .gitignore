@@ -28,6 +28,8 @@ CodeCakeBuilder/[Rr]eleases/
 
 PickupDirectory/
 
+*.suo
+*.user
 
 # Yarn - Not using Zero-Install (.yarn/cache and .pnp.* are not commited).
 .pnp.*
