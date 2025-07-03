@@ -6,13 +6,13 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="CK.Testing.Nunit" Version="12.1.1--0001-develop" />
-    <PackageReference Include="CK.TS.Angular.Engine" Version="0.25.1--0001-develop" />
+    <PackageReference Include="CK.TS.Angular.Engine" Version="0.25.1--0002-develop" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.6.0" />
-    <PackageReference Include="CK.Testing.SqlServerEngine" Version="29.1.1--0001-develop" />
-    <PackageReference Include="CK.Testing.TypeScriptEngine" Version="0.25.1--0001-develop" />
-    <PackageReference Include="CK.Testing.AspNetServer.Auth" Version="26.1.1--0001-develop" />
-    <PackageReference Include="CK.Cris.AspNet.Engine" Version="0.38.1--0002-develop" />
+    <PackageReference Include="CK.Testing.SqlServerEngine" Version="29.1.1--0002-develop" />
+    <PackageReference Include="CK.Testing.TypeScriptEngine" Version="0.25.1--0002-develop" />
+    <PackageReference Include="CK.Testing.AspNetServer.Auth" Version="26.1.1--0002-develop" />
+    <PackageReference Include="CK.Cris.AspNet.Engine" Version="0.38.1--0003-develop" />
     <PackageReference Include="CK.Ng.AspNet.Auth.Basic" Version="0.0.0--05fwv2h-explo" />
   </ItemGroup>
   <ItemGroup>
