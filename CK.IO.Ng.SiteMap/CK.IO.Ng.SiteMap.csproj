@@ -1,12 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
-
   <ItemGroup>
-    <PackageReference Include="CK.IO.Auth" Version="0.0.0--05fifyn-explo" />
-    <PackageReference Include="CK.Cris.TypeScript" Version="0.0.0--05fy9b3-explo" />
+    <PackageReference Include="CK.IO.Auth" Version="0.38.1--0002-develop" />
+    <PackageReference Include="CK.Cris.TypeScript" Version="0.38.1--0002-develop" />
   </ItemGroup>
-
 </Project>
