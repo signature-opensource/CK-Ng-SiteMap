@@ -12,7 +12,7 @@
     <PackageReference Include="CK.Testing.SqlServerEngine" Version="30.0.1--0018-develop" />
     <PackageReference Include="CK.Testing.TypeScriptEngine" Version="0.26.3--0046-develop" />
     <PackageReference Include="CK.Testing.AspNetServer.Auth" Version="27.0.2--0019-develop" />
-    <PackageReference Include="CK.Cris.AspNet.Engine" Version="0.50.0-a00-00-0029-develop" />
+    <PackageReference Include="CK.Cris.AspNet.Engine" Version="0.50.0-a00-00-0030-develop" />
     <PackageReference Include="CK.Ng.AspNet.Auth.Basic" Version="0.26.3--0046-develop" />
   </ItemGroup>
   <ItemGroup>
