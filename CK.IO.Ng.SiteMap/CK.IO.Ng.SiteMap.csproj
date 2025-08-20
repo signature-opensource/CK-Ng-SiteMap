@@ -3,7 +3,7 @@
     <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="CK.IO.Auth" Version="0.39.2--0012-develop" />
-    <PackageReference Include="CK.Cris.TypeScript" Version="0.50.0-a00-00-0037-develop" />
+    <PackageReference Include="CK.IO.Auth" Version="0.39.2--0013-develop" />
+    <PackageReference Include="CK.Cris.TypeScript" Version="0.50.0-a00-00-0038-develop" />
   </ItemGroup>
 </Project>
