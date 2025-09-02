@@ -20,12 +20,14 @@ public class SiteMapTests
         var configuration = TestHelper.CreateDefaultEngineConfiguration();
         configuration.FirstBinPath.Path = TestHelper.BinFolder;
         configuration.EnsureSqlServerConfigurationAspect();
-        configuration.FirstBinPath.EnsureTypeScriptConfigurationAspect( targetProjectPath );
         configuration.FirstBinPath.Assemblies.AddRange( [
             "CK.TS.Angular",
             "CK.Ng.AspNet.Auth.Basic",
             "CK.Ng.SiteMap"
             ] );
+        var tsConfig = configuration.FirstBinPath.EnsureTypeScriptConfigurationAspect( targetProjectPath );
+        Throw.DebugAssert( tsConfig.AspectConfiguration != null );
+        tsConfig.AspectConfiguration.IgnoreVersionsBound = true;
         var map = (await configuration.RunSuccessfullyAsync()).LoadMap();
 
         var builder = WebApplication.CreateSlimBuilder();
