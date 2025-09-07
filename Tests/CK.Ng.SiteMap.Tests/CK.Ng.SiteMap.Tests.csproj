@@ -6,14 +6,14 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="CK.Testing.Nunit" Version="13.0.1--0016-develop" />
-    <PackageReference Include="CK.TS.Angular.Engine" Version="0.26.3--0123-develop" />
+    <PackageReference Include="CK.TS.Angular.Engine" Version="0.26.3--0124-develop" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.6.0" />
-    <PackageReference Include="CK.Testing.SqlServerEngine" Version="30.0.1--0030-develop" />
-    <PackageReference Include="CK.Testing.TypeScriptEngine" Version="0.26.3--0123-develop" />
-    <PackageReference Include="CK.Testing.AspNetServer.Auth" Version="27.0.2--0032-develop" />
-    <PackageReference Include="CK.Cris.AspNet.Engine" Version="0.50.0-a00-00-0052-develop" />
-    <PackageReference Include="CK.Ng.AspNet.Auth.Basic" Version="0.26.3--0123-develop" />
+    <PackageReference Include="CK.Testing.SqlServerEngine" Version="30.0.1--0031-develop" />
+    <PackageReference Include="CK.Testing.TypeScriptEngine" Version="0.26.3--0124-develop" />
+    <PackageReference Include="CK.Testing.AspNetServer.Auth" Version="27.0.2--0033-develop" />
+    <PackageReference Include="CK.Cris.AspNet.Engine" Version="0.50.0-a00-00-0053-develop" />
+    <PackageReference Include="CK.Ng.AspNet.Auth.Basic" Version="0.26.3--0124-develop" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\CK.Ng.SiteMap\CK.Ng.SiteMap.csproj" />
