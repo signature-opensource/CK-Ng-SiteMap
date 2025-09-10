@@ -5,15 +5,15 @@
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="CK.Testing.Nunit" Version="13.0.1--0016-develop" />
-    <PackageReference Include="CK.TS.Angular.Engine" Version="0.26.3--0136-develop" />
+    <PackageReference Include="CK.Testing.Nunit" Version="13.0.1--0019-develop" />
+    <PackageReference Include="CK.TS.Angular.Engine" Version="0.26.3--0138-develop" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
     <PackageReference Include="NUnit3TestAdapter" Version="5.1.0" />
-    <PackageReference Include="CK.Testing.SqlServerEngine" Version="30.0.1--0040-develop" />
-    <PackageReference Include="CK.Testing.TypeScriptEngine" Version="0.26.3--0136-develop" />
-    <PackageReference Include="CK.Testing.AspNetServer.Auth" Version="27.0.2--0042-develop" />
-    <PackageReference Include="CK.Cris.AspNet.Engine" Version="0.50.0-a00-00-0067-develop" />
-    <PackageReference Include="CK.Ng.AspNet.Auth.Basic" Version="0.26.3--0136-develop" />
+    <PackageReference Include="CK.Testing.SqlServerEngine" Version="30.0.1--0042-develop" />
+    <PackageReference Include="CK.Testing.TypeScriptEngine" Version="0.26.3--0138-develop" />
+    <PackageReference Include="CK.Testing.AspNetServer.Auth" Version="27.0.2--0044-develop" />
+    <PackageReference Include="CK.Cris.AspNet.Engine" Version="0.50.0-a00-00-0070-develop" />
+    <PackageReference Include="CK.Ng.AspNet.Auth.Basic" Version="0.26.3--0138-develop" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\CK.Ng.SiteMap\CK.Ng.SiteMap.csproj" />
