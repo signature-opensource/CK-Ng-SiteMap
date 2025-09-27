@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="CK.DB.HWorkspace.Page" Version="0.10.2" />
+    <PackageReference Include="CK.SqlServer.Dapper" Version="13.0.1" />
+    <PackageReference Include="CK.Ng.AspNet.Auth" Version="0.27.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CK.IO.Ng.SiteMap\CK.IO.Ng.SiteMap.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Res\" />
+  </ItemGroup>
+</Project>
