@@ -3,9 +3,9 @@
     <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="CK.DB.HWorkspace.Page" Version="0.10.2" />
-    <PackageReference Include="CK.SqlServer.Dapper" Version="13.0.1" />
-    <PackageReference Include="CK.Ng.AspNet.Auth" Version="0.27.2" />
+    <PackageReference Include="CK.DB.HWorkspace.Page" Version="0.11.0" />
+    <PackageReference Include="CK.SqlServer.Dapper" Version="14.0.0" />
+    <PackageReference Include="CK.Ng.AspNet.Auth" Version="0.28.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CK.IO.Ng.SiteMap\CK.IO.Ng.SiteMap.csproj" />
