@@ -5869,7 +5869,7 @@ __metadata:
     jest-util: "npm:^30.0.5"
     less: "npm:^4.4.1"
     luxon: "npm:^3.5"
-    ng-zorro-antd: "npm:^20"
+    ng-zorro-antd: "npm:~20.3"
     rxjs: "npm:~7.8"
     ts-jest: "npm:^29.4.4"
     tslib: "npm:^2.3"
@@ -9728,9 +9728,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ng-zorro-antd@npm:^20":
-  version: 20.2.1
-  resolution: "ng-zorro-antd@npm:20.2.1"
+"ng-zorro-antd@npm:~20.3":
+  version: 20.3.1
+  resolution: "ng-zorro-antd@npm:20.3.1"
   dependencies:
     "@angular/cdk": "npm:^20.0.0"
     "@ant-design/icons-angular": "npm:^20.0.0"
@@ -9744,7 +9744,7 @@ __metadata:
     "@angular/forms": ^20.0.0
     "@angular/platform-browser": ^20.0.0
     "@angular/router": ^20.0.0
-  checksum: 10/5f9bbfe6d0461417a9176ea17bdbc900f921a1f2ca210741de0c308e182d3066efbf97f38549377ef640f2c07e91939caf83c897991f4257c588c8b3e60d8e10
+  checksum: 10/9842b037509f2cef787340ab13cc12403ce7f7c7090e83ded7ff8e4fd08e21d5db22458f3db732ef3a201bea1004805dbf1d2fe8d7c08a8b755cf8b170555446
   languageName: node
   linkType: hard
 
