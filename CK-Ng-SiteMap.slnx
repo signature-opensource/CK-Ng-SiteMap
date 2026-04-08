@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".gitignore" />
+    <File Path="appveyor.yml" />
+    <File Path="NuGet.config" />
+    <File Path="README.md" />
+  </Folder>
+  <Folder Name="/Tests/">
+    <Project Path="Tests/CK.Ng.SiteMap.Tests/CK.Ng.SiteMap.Tests.csproj" />
+  </Folder>
+  <Project Path="CK.IO.Ng.SiteMap/CK.IO.Ng.SiteMap.csproj" />
+  <Project Path="CK.Ng.SiteMap/CK.Ng.SiteMap.csproj" />
+</Solution>
