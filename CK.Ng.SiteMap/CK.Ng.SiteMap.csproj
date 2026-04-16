@@ -5,7 +5,7 @@
   <ItemGroup>
     <PackageReference Include="CK.DB.HWorkspace.Page" Version="0.13.0--ci.7" />
     <PackageReference Include="CK.SqlServer.Dapper" Version="15.0.0--ci.11" />
-    <PackageReference Include="CK.Ng.AspNet.Auth" Version="0.31.0--ci.14" />
+    <PackageReference Include="CK.Ng.AspNet.Auth" Version="0.31.0--ci.20" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CK.IO.Ng.SiteMap\CK.IO.Ng.SiteMap.csproj" />
