@@ -1,7 +1,7 @@
 using CK.Core;
 using CK.TypeScript;
 
-namespace CK.IO.Ng.SiteMap;
+namespace CK.IO.SiteMap;
 
 /// <summary>
 /// Minimal model for a web page.

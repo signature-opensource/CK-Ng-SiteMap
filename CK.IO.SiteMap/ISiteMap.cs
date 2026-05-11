@@ -2,7 +2,7 @@ using CK.Core;
 using CK.TypeScript;
 using System.Collections.Generic;
 
-namespace CK.IO.Ng.SiteMap;
+namespace CK.IO.SiteMap;
 
 /// <summary>
 /// Root model of a site map. This is bound to a user and only contains the elements
@@ -31,9 +31,4 @@ public interface ISiteMap : IPoco
     /// Gets the list of pages ordered by their <see cref="IWebPage.Path"/>.
     /// </summary>
     public IList<IWebPage> Pages { get; }
-
-    /// <summary>
-    /// Gets the point of views existing in the <see cref="Pages"/>.
-    /// </summary>
-    public IList<IWebPagePointOfView> Pov { get; }
 }

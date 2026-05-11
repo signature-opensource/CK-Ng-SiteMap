@@ -8,9 +8,6 @@
     <PackageReference Include="CK.Ng.AspNet.Auth" Version="0.30.4--0003-develop" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CK.IO.Ng.SiteMap\CK.IO.Ng.SiteMap.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Res\" />
+    <ProjectReference Include="..\CK.IO.SiteMap\CK.IO.SiteMap.csproj" />
   </ItemGroup>
 </Project>

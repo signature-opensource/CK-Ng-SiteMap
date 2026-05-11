@@ -2,7 +2,7 @@ using CK.Auth;
 using CK.Cris;
 using CK.TypeScript;
 
-namespace CK.IO.Ng.SiteMap;
+namespace CK.IO.SiteMap;
 
 /// <summary>
 /// Query command for <see cref="ISiteMap"/>.
