@@ -1,16 +1,15 @@
 using CK.Core;
 using CK.Cris;
 using CK.DB.HWorkspace;
-using CK.IO.Ng.SiteMap;
+using CK.IO.SiteMap;
 using CK.SqlServer;
 using Dapper;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
-namespace CK.AspNet.SiteMap;
+namespace CK.DB.SiteMap;
 
-public sealed class SiteMapService : ISingletonAutoService
+public class SiteMapService : ISingletonAutoService
 {
     readonly WorkspaceTable _workspaceTable;
 
@@ -33,7 +32,6 @@ public sealed class SiteMapService : ISingletonAutoService
 
     [CommandHandler]
     public async Task<ISiteMap> GetSiteMapAsync( ISqlCallContext ctx,
-                                                 IPocoFactory<IWebPagePointOfView> povFactory, 
                                                  IGetSiteMapQCommand cmd )
     {
         Throw.DebugAssert( cmd.ActorId.HasValue );
@@ -43,27 +41,7 @@ public sealed class SiteMapService : ISingletonAutoService
         {
             s.HomePageId = home;
             s.Pages.AddRange( pages );
-            s.Pov.AddRange( pages.Select( p => GetPOV( p.Path ) )
-                                 .GroupBy( Util.FuncIdentity )
-                                 .Select( g =>
-                                 {
-                                     var p = povFactory.Create();
-                                     p.Name = g.Key;
-                                     p.PageCount = g.Count();
-                                     return p;
-                                 } ) );
         } );
-
-        static string? GetPOV( string path )
-        {
-            int idx = path.LastIndexOf( '/' );
-            Throw.DebugAssert( idx < 0 || idx < path.Length - 1 );
-            if( ++idx > 0 && path[idx] == '$' )
-            {
-                return path.Substring( idx );
-            }
-            return null;
-        }
     }
 
     /// <summary>
@@ -99,5 +77,4 @@ public sealed class SiteMapService : ISingletonAutoService
                     inner join CK.tWorkspace w on u.PreferredWorkspaceId = w.WorkspaceId",
             new { ActorId = actorId } );
     }
-
 }

@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="CK.DB.HWorkspace.Page" Version="0.13.1--ci.1" />
+      <PackageReference Include="CK.SqlServer.Dapper" Version="15.0.1--ci.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\CK.IO.SiteMap\CK.IO.SiteMap.csproj" />
+    </ItemGroup>
+
+</Project>

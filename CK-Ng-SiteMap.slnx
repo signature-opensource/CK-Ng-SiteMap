@@ -1,0 +1,17 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".gitignore" />
+    <File Path="appveyor.yml" />
+    <File Path="NuGet.config" />
+    <File Path="README.md" />
+  </Folder>
+  <Folder Name="/Tests/">
+    <Project Path="Tests/CK.Ng.SiteMap.Tests/CK.Ng.SiteMap.Tests.csproj" />
+  </Folder>
+  <Project Path="CK.DB.SiteMap.PointOfView/CK.DB.SiteMap.PointOfView.csproj" Id="485895b6-d349-41f2-8f17-eb754c10145e" />
+  <Project Path="CK.DB.SiteMap/CK.DB.SiteMap.csproj" />
+  <Project Path="CK.IO.SiteMap.PointOfView/CK.IO.SiteMap.PointOfView.csproj" Id="d37f5866-5e91-4fa5-9eb4-df35d1b684e8" />
+  <Project Path="CK.IO.SiteMap/CK.IO.SiteMap.csproj" />
+  <Project Path="CK.Ng.SiteMap.PointOfView/CK.Ng.SiteMap.PointOfView.csproj" Id="689a62ea-3ab5-4b4f-a352-8404785103b7" />
+  <Project Path="CK.Ng.SiteMap/CK.Ng.SiteMap.csproj" />
+</Solution>
