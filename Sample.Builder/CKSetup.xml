@@ -1,0 +1,18 @@
+<Setup>
+    <Aspect Type="CK.Setup.SetupableAspectConfiguration, CK.Setupable.Model" Version="1"/>
+    <Aspect Type="CK.Setup.SqlSetupAspectConfiguration, CK.SqlServer.Setup.Model">
+        <DefaultDatabaseConnectionString>Server=.;Database=CK_NG_SITEMAP_SAMPLE;Integrated Security=True;TrustServerCertificate=true</DefaultDatabaseConnectionString>
+    </Aspect>
+
+    <Aspect Type="CK.Setup.TypeScriptAspectConfiguration, CK.TypeScript" />
+
+    <BinPaths>
+        <BinPath>
+            <TypeScript IntegrationMode="Inline" TargetProjectPath="{ProjectPath}/Sample.Web" DefaultCulture="fr">
+                <Barrels />
+                <Types />
+                <ExcludedTypes />
+            </TypeScript>
+        </BinPath>
+    </BinPaths>
+</Setup>

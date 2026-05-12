@@ -1,4 +1,9 @@
 <Solution>
+  <Folder Name="/Sample/">
+    <Project Path="Sample.App/Sample.App.csproj" Id="9cf672fe-fe2c-4e90-9c75-42462fce48c7" />
+    <Project Path="Sample.Builder/Sample.Builder.csproj" Id="a48e7a0f-c21b-4bb2-b388-a610430ea166" />
+    <Project Path="Sample.Host/Sample.Host.csproj" Id="05fdecaa-5090-4fe0-a327-accdee99b2f0" />
+  </Folder>
   <Folder Name="/Solution Items/">
     <File Path=".gitignore" />
     <File Path="appveyor.yml" />
