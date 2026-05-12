@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CK.Ng.AspNet.Auth" Version="0.31.2--ci.1" />
+    <PackageReference Include="CK.Ng.Cris.AspNet.Auth" Version="0.55.2--ci.1" />
     <PackageReference Include="CK.Ng.Zorro.Basic" Version="0.6.3--ci.2" />
     <PackageReference Include="CK.Ng.Zorro.Breadcrumb" Version="0.6.3--ci.2" />
   </ItemGroup>

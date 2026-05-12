@@ -8,18 +8,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="CK.AppIdentity.Hosting" Version="0.14.1--ci.1" />
     <PackageReference Include="CK.Cris.AspNet" Version="0.55.2--ci.1" />
+    <PackageReference Include="CK.Cris.Auth" Version="0.43.1--ci.1" />
     <PackageReference Include="CK.DB.AspNet.Auth" Version="31.0.1--ci.1" />
+    <PackageReference Include="CK.DB.User.UserPassword" Version="28.0.1--ci.1" />
+    <PackageReference Include="CK.Ng.AspNet.Auth.Basic" Version="0.31.2--ci.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\CK.DB.SiteMap\CK.DB.SiteMap.csproj" />
     <ProjectReference Include="..\CK.IO.SiteMap\CK.IO.SiteMap.csproj" />
     <ProjectReference Include="..\CK.Ng.SiteMap\CK.Ng.SiteMap.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Res\" />
   </ItemGroup>
 
 </Project>

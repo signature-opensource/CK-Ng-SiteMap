@@ -10,6 +10,7 @@ var builder = WebApplication.CreateSlimBuilder( args );
 var monitor = builder.GetBuilderMonitor();
 
 builder.UseCKMonitoring();
+builder.AddApplicationIdentityServiceConfiguration();
 
 builder.Services.AddSpaStaticFiles( c => c.RootPath = "wwwroot" );
 
