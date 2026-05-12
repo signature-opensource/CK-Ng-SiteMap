@@ -1,7 +1,11 @@
+using CK.AppIdentity;
 using CK.Core;
+using CK.Cris;
 using CK.Setup;
+using CK.Setup.Cris;
 using CK.Testing;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
 using System;
 using System.Threading.Tasks;
@@ -20,18 +24,14 @@ public class SiteMapTests
         var configuration = TestHelper.CreateDefaultEngineConfiguration();
         configuration.FirstBinPath.Path = TestHelper.BinFolder;
         configuration.EnsureSqlServerConfigurationAspect();
-        configuration.FirstBinPath.Assemblies.AddRange( [
-            "CK.TS.Angular",
-            "CK.Ng.AspNet.Auth.Basic",
-            "CK.Ng.SiteMap"
-            ] );
         var tsConfig = configuration.FirstBinPath.EnsureTypeScriptConfigurationAspect( targetProjectPath );
         Throw.DebugAssert( tsConfig.AspectConfiguration != null );
         tsConfig.AspectConfiguration.IgnoreVersionsBound = true;
+
         var map = (await configuration.RunSuccessfullyAsync()).LoadMap();
 
         var builder = WebApplication.CreateSlimBuilder();
-
+        builder.Services.AddSingleton( ApplicationIdentityServiceConfiguration.CreateEmpty() );
 
         await using var server = await builder.CreateRunningAspNetAuthenticationServerAsync( map, o => o.SlidingExpirationTime = TimeSpan.FromMinutes( 10 ) );
         await using var runner = TestHelper.CreateTypeScriptRunner( targetProjectPath, server.ServerAddress );
