@@ -1,7 +1,7 @@
 using CK.Core;
 using CK.TypeScript;
 
-namespace CK.IO.Ng.SiteMap;
+namespace CK.IO.SiteMap;
 
 /// <summary>
 /// Models the web page component type.

@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CK.IO.SiteMap.PointOfView\CK.IO.SiteMap.PointOfView.csproj" />
+    <ProjectReference Include="..\CK.Ng.SiteMap\CK.Ng.SiteMap.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,7 +1,7 @@
 using CK.Core;
 using CK.TypeScript;
 
-namespace CK.IO.Ng.SiteMap;
+namespace CK.IO.SiteMap.PointOfView;
 
 /// <summary>
 /// A point of view describes an aspect of the <see cref="ISiteMap.Pages"/>.

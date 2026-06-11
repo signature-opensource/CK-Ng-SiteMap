@@ -1,4 +1,9 @@
 <Solution>
+  <Folder Name="/Sample/">
+    <Project Path="Sample.App/Sample.App.csproj" Id="9cf672fe-fe2c-4e90-9c75-42462fce48c7" />
+    <Project Path="Sample.Builder/Sample.Builder.csproj" Id="a48e7a0f-c21b-4bb2-b388-a610430ea166" />
+    <Project Path="Sample.Host/Sample.Host.csproj" Id="05fdecaa-5090-4fe0-a327-accdee99b2f0" />
+  </Folder>
   <Folder Name="/Solution Items/">
     <File Path=".gitignore" />
     <File Path="appveyor.yml" />
@@ -8,6 +13,10 @@
   <Folder Name="/Tests/">
     <Project Path="Tests/CK.Ng.SiteMap.Tests/CK.Ng.SiteMap.Tests.csproj" />
   </Folder>
-  <Project Path="CK.IO.Ng.SiteMap/CK.IO.Ng.SiteMap.csproj" />
+  <Project Path="CK.DB.SiteMap.PointOfView/CK.DB.SiteMap.PointOfView.csproj" Id="485895b6-d349-41f2-8f17-eb754c10145e" />
+  <Project Path="CK.DB.SiteMap/CK.DB.SiteMap.csproj" />
+  <Project Path="CK.IO.SiteMap.PointOfView/CK.IO.SiteMap.PointOfView.csproj" Id="d37f5866-5e91-4fa5-9eb4-df35d1b684e8" />
+  <Project Path="CK.IO.SiteMap/CK.IO.SiteMap.csproj" />
+  <Project Path="CK.Ng.SiteMap.PointOfView/CK.Ng.SiteMap.PointOfView.csproj" Id="689a62ea-3ab5-4b4f-a352-8404785103b7" />
   <Project Path="CK.Ng.SiteMap/CK.Ng.SiteMap.csproj" />
 </Solution>
