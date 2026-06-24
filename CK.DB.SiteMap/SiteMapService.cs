@@ -5,6 +5,7 @@ using CK.IO.SiteMap;
 using CK.SqlServer;
 using Dapper;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace CK.DB.SiteMap;
@@ -26,11 +27,12 @@ public class SiteMapService : ISingletonAutoService
         var pages = await GetWebPagesAsync( ctx, cmd.ActorId.Value );
         var home = await GetPreferredWorkspacePageAsync( ctx, cmd.ActorId.Value );
         var componentTypes = await GetWebPageComponentTypesAsync( ctx );
+
         return cmd.CreateResult( s =>
         {
             s.HomePageId = home;
             s.Pages.AddRange( pages );
-            s.ComponentTypes.AddRange( componentTypes );
+            s.ComponentTypes.AddRange( componentTypes.Where( ct => pages.Any( p => p.ComponentTypeId == ct.ComponentTypeId ) ) );
         } );
     }
 
@@ -70,9 +72,10 @@ public class SiteMapService : ISingletonAutoService
     }
 
     Task<IEnumerable<IWebPagePageComponentType>> GetWebPageComponentTypesAsync( ISqlCallContext ctx )
-        => ctx[_workspaceTable].QueryAsync<IWebPagePageComponentType>(
-            @"select ct.ComponentTypeId,
-                     ct.TypeName
-              from CK.tWebPageComponentType ct;"
+        => ctx[_workspaceTable].QueryAsync<IWebPagePageComponentType>( @"
+            select ct.ComponentTypeId,
+                   ct.TypeName
+            from CK.tWebPageComponentType ct
+            where ct.ComponentTypeId > 0;"
         );
 }
