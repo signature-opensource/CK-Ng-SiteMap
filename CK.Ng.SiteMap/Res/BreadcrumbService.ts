@@ -44,9 +44,9 @@ export class BreadcrumbService {
 
         effect(() => {
             const routes = this.#dynamicRouterService.routesUpdated();
-            this.#logRoutes(routes);
+            // this.#logRoutes(routes);
             this.#fullBreadcrumb = this.#buildFullBreadcrumbTreeFromRoutes(routes);
-            this.#logFullBreadcrumb(this.#fullBreadcrumb);
+            // this.#logFullBreadcrumb(this.#fullBreadcrumb);
             this.#breadcrumb.set(this.#buildPublicBreacrumb(this.#fullBreadcrumb, this.#currentPath));
         });
     }
@@ -170,6 +170,7 @@ export class BreadcrumbService {
         }
 
         // Second step: New BeradcrumbItem instances, remove segment and set disabled
+        const activeLeaf = items[items.length - 1];
         const result: BreadcrumbItem[] = [];
         for (let i = 0; i < items.length; i++) {
             const node = items[i];
@@ -184,7 +185,7 @@ export class BreadcrumbService {
                 bi = this.#toBreadcrumbItem(node);
             }
             if (node.children && node.children.length > 0) {
-                bi.children = this.#buildChildren(node.children, i < items.length - 1 ? items[i + 1].segment : undefined);
+                bi.children = this.#buildChildren(node.children, i < items.length - 1 ? items[i + 1] : undefined, activeLeaf);
             }
             result.push(bi);
         }
@@ -212,25 +213,25 @@ export class BreadcrumbService {
     }
 
     /**
-     * Builds the dropdown items for a breadcrumb node: the sibling actually on the active path (disabled),
-     * directly clickable siblings (as-is), and, for non-clickable siblings, the first clickable descendant(s)
-     * reached by drilling through their subtree (disambiguated when several share the same pageTitle).
+     * Builds the dropdown items for a breadcrumb node: directly clickable siblings (as-is) and,
+     * for non-clickable siblings, the first clickable descendant(s) reached by drilling through
+     * their subtree (disambiguated when several share the same pageTitle). The dropdown's content
+     * never depends on the active path: the sibling actually on the active path is included like
+     * any other and only marked `disabled`, so the dropdown stays stable while navigating.
      */
-    #buildChildren(nodes: Node[], nextSegment?: string): BreadcrumbItem[] {
+    #buildChildren(nodes: Node[], nextNode: Node | undefined, activeLeaf: Node | undefined): BreadcrumbItem[] {
         const items: BreadcrumbItem[] = [];
         const drilled: DrilledCandidate[] = [];
 
         for (const child of nodes) {
-            if (child.segment === nextSegment) {
-                items.push(this.#toBreadcrumbItem(child, true));
-            } else if (child.clickable) {
-                items.push({ name: child.pageTitle, onClick: child.onClick, disabled: false });
+            if (child.clickable) {
+                items.push({ name: child.pageTitle, onClick: child.onClick, disabled: child === nextNode });
             } else {
                 drilled.push(...this.#collectFirstClickableDescendants(child));
             }
         }
 
-        items.push(...this.#disambiguateHomonyms(drilled));
+        items.push(...this.#disambiguateHomonyms(drilled, activeLeaf));
         return items;
     }
 
@@ -251,10 +252,12 @@ export class BreadcrumbService {
 
     /**
      * Prefixes each drilled candidate's name so that pages sharing the same pageTitle can be told apart,
-     * per CK.Ng.SiteMap/README.md: no homonym => generic "(…)"; homonyms => the closest-to-target ancestor
-     * name not already claimed by another candidate of the same group, ellipsis marking hidden segments.
+     * per CK.Ng.SiteMap/README.md: no homonym => generic "(…)"; homonyms => the shallowest ancestor name
+     * (searching from the target towards the root) that actually distinguishes the candidate from the
+     * others still ambiguous at that depth, ellipsis marking hidden segments. `activeLeaf` (the node the
+     * current URL actually resolves to) is used only to flag the matching item as `disabled`.
      */
-    #disambiguateHomonyms(drilled: DrilledCandidate[]): BreadcrumbItem[] {
+    #disambiguateHomonyms(drilled: DrilledCandidate[], activeLeaf: Node | undefined): BreadcrumbItem[] {
         const groups = new Map<string, DrilledCandidate[]>();
         for (const candidate of drilled) {
             const group = groups.get(candidate.node.pageTitle);
@@ -268,31 +271,70 @@ export class BreadcrumbService {
         const items: BreadcrumbItem[] = [];
         for (const group of groups.values()) {
             if (group.length === 1) {
-                items.push(this.#toDisambiguatedItem(group[0], '…'));
+                const candidate = group[0];
+                items.push(this.#toDisambiguatedItem(candidate, '…', candidate.node === activeLeaf));
                 continue;
             }
 
-            const used = new Set<string>();
+            const chosenDepths = new Map<DrilledCandidate, number>();
+            this.#assignDisambiguationDepths(group, 0, chosenDepths);
+
             for (const candidate of group) {
                 const leafToRoot = [...candidate.ancestors].reverse();
-                let chosenIndex = leafToRoot.findIndex(name => !used.has(name));
-                if (chosenIndex === -1) chosenIndex = 0; // Pathological case: every ancestor name already claimed.
-
-                leafToRoot.forEach(name => used.add(name));
+                const chosenIndex = chosenDepths.get(candidate)!;
 
                 const leading = chosenIndex !== leafToRoot.length - 1 ? '…' : '';
                 const trailing = chosenIndex !== 0 ? '…' : '';
-                items.push(this.#toDisambiguatedItem(candidate, `${leading}${leafToRoot[chosenIndex]}${trailing}`));
+                items.push(this.#toDisambiguatedItem(candidate, `${leading}${leafToRoot[chosenIndex]}${trailing}`, candidate.node === activeLeaf));
             }
         }
         return items;
     }
 
-    #toDisambiguatedItem(candidate: DrilledCandidate, prefix: string): BreadcrumbItem {
+    /**
+     * Splits a group of homonym candidates by their ancestor name at `depth` positions from the
+     * target (0 = immediate parent), recursing towards the root only for the subset that still
+     * shares a name at that depth. This guarantees a name common to a whole still-ambiguous subset
+     * is never chosen, and that the shallowest genuinely distinguishing ancestor wins.
+     */
+    #assignDisambiguationDepths(candidates: DrilledCandidate[], depth: number, result: Map<DrilledCandidate, number>): void {
+        const buckets = new Map<string, DrilledCandidate[]>();
+        const exhausted: DrilledCandidate[] = [];
+        for (const candidate of candidates) {
+            const leafToRoot = [...candidate.ancestors].reverse();
+            if (depth >= leafToRoot.length) {
+                exhausted.push(candidate);
+                continue;
+            }
+            const name = leafToRoot[depth];
+            const bucket = buckets.get(name);
+            if (bucket) {
+                bucket.push(candidate);
+            } else {
+                buckets.set(name, [candidate]);
+            }
+        }
+
+        for (const bucket of buckets.values()) {
+            if (bucket.length === 1) {
+                result.set(bucket[0], depth);
+            } else {
+                this.#assignDisambiguationDepths(bucket, depth + 1, result);
+            }
+        }
+
+        // Pathological case: identical ancestor chains all the way to the root. Fall back to the
+        // last valid depth rather than looping forever.
+        for (const candidate of exhausted) {
+            result.set(candidate, Math.max(0, candidate.ancestors.length - 1));
+        }
+    }
+
+    #toDisambiguatedItem(candidate: DrilledCandidate, prefix: string, disabled: boolean = false): BreadcrumbItem {
         return {
             name: `(${prefix}) ${candidate.node.pageTitle}`,
             onClick: candidate.node.onClick,
-            disabled: false
+            disabled
         };
     }
 
