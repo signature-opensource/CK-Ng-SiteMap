@@ -6,7 +6,7 @@ import { NgAuthService } from '@local/ck-gen/CK/Ng/AspNet/Auth/NgAuthService';
 import { GetSiteMapQCommand } from '@local/ck-gen/CK/IO/SiteMap/GetSiteMapQCommand';
 import { SiteMap } from '@local/ck-gen/CK/IO/SiteMap/SiteMap';
 import { PrivatePage } from '../AspNet/Auth/private-page/private-page';
-import { IRouteListener, ROUTE_LISTENER } from './RouteListener';
+import { DynamicRouterService } from './DynamicRouterService';
 
 export type PreferredPage = {
     title: string;
@@ -35,7 +35,7 @@ export class SiteMapProvider {
     readonly #cris = inject(HttpCrisEndpoint);
     readonly #auth = inject(NgAuthService);
     readonly #router = inject(Router);
-    readonly #routerListener = inject<IRouteListener>(ROUTE_LISTENER, { optional: true });
+    readonly #dynamicRouterService = inject(DynamicRouterService);
     //#endregion
 
     //#region Private values
@@ -97,7 +97,7 @@ export class SiteMapProvider {
                 pp.children.push(route);
             }
             this.#rootRoute = route;
-            this.#routerListener?.updateFromRouter();
+            this.#dynamicRouterService.signalRoutesUpdate();
 
             if (homePagePath !== undefined) {
                 await this.#router.navigateByUrl(homePagePath);

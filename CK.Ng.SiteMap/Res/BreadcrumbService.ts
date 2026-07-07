@@ -3,7 +3,7 @@ import { BreadcrumbItem } from '../Zorro/breadcrumb/breadcrumb-item-model';
 import { NavigationEnd, Route, Router } from '@angular/router';
 import { filter } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { IRouteListener } from './RouteListener';
+import { DynamicRouterService } from './DynamicRouterService';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
 
 /** This type is synchronized with the same in CK.Ng.SiteMap. */
@@ -25,10 +25,11 @@ function getRootBreadcrumb(): BreadcrumbItem {
 }
 
 @Injectable({ providedIn: 'root' })
-export class BreadcrumbService implements IRouteListener {
+export class BreadcrumbService {
 
     readonly #router = inject(Router);
     readonly #destroyRef = inject(DestroyRef);
+    readonly #dynamicRouterService = inject(DynamicRouterService);
 
     #fullBreadcrumb: BreadcrumbItem;
     readonly #breadcrumb: WritableSignal<BreadcrumbItem[]> = signal([]);
