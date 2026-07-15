@@ -190,7 +190,7 @@ export class BreadcrumbService {
             result.push(bi);
         }
 
-        return this.#trimUninformativeLeadingItems(result);
+        return this.#collapseConsecutiveNonClickable(this.#trimUninformativeLeadingItems(result));
     }
 
     /**
@@ -204,6 +204,35 @@ export class BreadcrumbService {
             start++;
         }
         return items.slice(start);
+    }
+
+    /**
+     * Merges maximal runs of 2+ consecutive disabled (non-clickable) items into a single '(…)'
+     * placeholder. Without this, a deep chain of non-clickable intermediate segments can push a
+     * clickable ancestor (e.g. the root page) out of the window kept by minItemsShow, making it
+     * unreachable. A lone disabled item (no disabled neighbour) is left untouched: there is nothing
+     * to concatenate it with. The placeholder reuses the first item's already-computed dropdown
+     * (its `children`), since that item is the entry point of the whole collapsed run.
+     */
+    #collapseConsecutiveNonClickable(items: BreadcrumbItem[]): BreadcrumbItem[] {
+        const result: BreadcrumbItem[] = [];
+        let i = 0;
+        while (i < items.length) {
+            if (!items[i].disabled) {
+                result.push(items[i]);
+                i++;
+                continue;
+            }
+            let j = i + 1;
+            while (j < items.length && items[j].disabled) j++;
+            if (j - i >= 2) {
+                result.push({ name: '(…)', disabled: true, children: items[i].children });
+            } else {
+                result.push(items[i]);
+            }
+            i = j;
+        }
+        return result;
     }
 
     #toBreadcrumbItem(node: Node, forceDisabled: boolean = false): BreadcrumbItem {
