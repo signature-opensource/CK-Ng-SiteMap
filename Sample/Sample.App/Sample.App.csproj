@@ -17,9 +17,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CK.DB.SiteMap\CK.DB.SiteMap.csproj" />
-    <ProjectReference Include="..\CK.IO.SiteMap\CK.IO.SiteMap.csproj" />
-    <ProjectReference Include="..\CK.Ng.SiteMap\CK.Ng.SiteMap.csproj" />
+    <ProjectReference Include="..\..\CK.DB.SiteMap\CK.DB.SiteMap.csproj" />
+    <ProjectReference Include="..\..\CK.IO.SiteMap\CK.IO.SiteMap.csproj" />
+    <ProjectReference Include="..\..\CK.Ng.SiteMap\CK.Ng.SiteMap.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="**\*.sql" />
+    <EmbeddedResource Include="**\*.tql" />
+    <None Remove="**\*.sql" />
+    <None Remove="**\*.sql" />
   </ItemGroup>
 
 </Project>

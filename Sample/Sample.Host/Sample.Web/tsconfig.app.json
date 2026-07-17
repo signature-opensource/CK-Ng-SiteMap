@@ -7,7 +7,8 @@
     "types": []
   },
   "include": [
-    "src/**/*.ts"
+    "src/**/*.ts",
+    "ck-gen/**/*.ts"
   ],
   "exclude": [
     "src/**/*.spec.ts"
