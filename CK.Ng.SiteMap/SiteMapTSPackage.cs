@@ -15,6 +15,6 @@ namespace CK.Ng.SiteMap;
 // TODO: This configuration must be provided by a base package, referenced by CK.Ng.Zorro.Breadcrumb and CK.Ng.SiteMap
 [TypeScriptFile( "DynamicRouterService.ts", "DynamicRouterService" )]
 
-public sealed class TSPackage : TypeScriptPackage
+public sealed class SiteMapTSPackage : TypeScriptPackage
 {
 }
