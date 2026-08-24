@@ -1,8 +1,5 @@
 using CK.AppIdentity;
 using CK.Core;
-using CK.Cris;
-using CK.Setup;
-using CK.Setup.Cris;
 using CK.Testing;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
