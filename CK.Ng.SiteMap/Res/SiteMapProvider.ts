@@ -140,7 +140,7 @@ export class SiteMapProvider {
 
                 const isLast = i === path.length - 1;
                 if (isLast) {
-                    const ct = checkNotNull(siteMap.componentTypes.find(ct => ct.componentTypeId = page.componentTypeId), `Could not find component type with id ${page.componentTypeId}.`);
+                    const ct = checkNotNull(siteMap.componentTypes.find(ct => ct.componentTypeId === page.componentTypeId), `Could not find component type with id ${page.componentTypeId}.`);
                     const component = await resolveNamedComponentTypeAsync(ct.typeName);
                     nextRoute.component = checkNotNull(component, `Could not find '${ct.typeName}' component.`);
                     nextRoute.pageTitle = page.pageTitle;
