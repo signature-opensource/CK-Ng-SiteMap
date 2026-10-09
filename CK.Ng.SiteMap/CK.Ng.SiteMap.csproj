@@ -3,7 +3,7 @@
     <TargetFramework>net10.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="CK.DB.HWorkspace.Page" Version="2.0.1" />
+    <PackageReference Include="CK.DB.HWorkspace.Page" Version="2.0.2" />
     <PackageReference Include="CK.SqlServer.Dapper" Version="17.0.1" />
     <PackageReference Include="CK.Ng.AspNet.Auth" Version="2.0.1" />
   </ItemGroup>
