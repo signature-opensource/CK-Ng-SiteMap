@@ -20,9 +20,12 @@ public class SiteMapTests
         var configuration = TestHelper.CreateDefaultEngineConfiguration();
         configuration.FirstBinPath.Path = TestHelper.BinFolder;
         configuration.EnsureSqlServerConfigurationAspect();
+        // The application is its own AuthCenter (with its HTTP front).
+        configuration.FirstBinPath.AddAuthCenterApplication();
         configuration.FirstBinPath.Assemblies.AddRange( [
             "CK.TS.Angular",
-            "CK.Ng.AspNet.Auth.Basic",
+            "CK.Ng.Cris.AspNet.Authentication.Basic",
+            "CK.DB.User.UserPassword",
             "CK.Ng.SiteMap"
             ] );
         var tsConfig = configuration.FirstBinPath.EnsureTypeScriptConfigurationAspect( targetProjectPath );
@@ -30,10 +33,7 @@ public class SiteMapTests
         tsConfig.AspectConfiguration.IgnoreVersionsBound = true;
         var map = (await configuration.RunSuccessfullyAsync()).LoadMap();
 
-        var builder = WebApplication.CreateSlimBuilder();
-
-
-        await using var server = await builder.CreateRunningAspNetAuthenticationServerAsync( map, o => o.SlidingExpirationTime = TimeSpan.FromMinutes( 10 ) );
+        await using var server = await WebApplication.CreateSlimBuilder().CreateRunningAuthCenterApplicationAsync( map );
         await using var runner = TestHelper.CreateTypeScriptRunner( targetProjectPath, server.ServerAddress );
         await TestHelper.SuspendAsync( resume => resume );
         runner.Run();

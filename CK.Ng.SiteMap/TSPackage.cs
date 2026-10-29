@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace CK.Ng.SiteMap;
 
 [TypeScriptPackage]
-[Requires<CK.Ng.AspNet.Auth.AspNetAuthPackage>]
+[Requires<CK.Ng.Cris.AspNet.Authentication.NgCrisAuthenticationPackage>]
 public sealed class TSPackage : TypeScriptPackage
 {
 }
