@@ -3,7 +3,7 @@
     <TargetFramework>net10.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="CK.IO.Auth" Version="3.0.0-0.cris-auth.0.ci.32" />
-    <PackageReference Include="CK.Cris.TypeScript" Version="3.0.0-0.cris-auth.0.ci.37" />
+    <PackageReference Include="CK.IO.Auth" Version="3.0.0-0.cris-auth.0.ci.35" />
+    <PackageReference Include="CK.Cris.TypeScript" Version="3.0.0-0.cris-auth.0.ci.46" />
   </ItemGroup>
 </Project>
