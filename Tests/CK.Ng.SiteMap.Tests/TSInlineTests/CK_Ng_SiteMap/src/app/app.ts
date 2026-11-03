@@ -1,14 +1,15 @@
 // <HasNgPrivatePage />
-import { Component, inject, computed } from '@angular/core';
+import { Component, inject, computed, ChangeDetectionStrategy } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CKGenAppModule } from '@local/ck-gen/CK/Angular/CKGenAppModule';
-import { CommonModule } from '@angular/common';
+
 import { PrivatePage, NgAuthService } from '@local/ck-gen';
 // Private Page is from CK.Ng.Cris.AspNet.Authentication package.
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, PrivatePage, CKGenAppModule],
+  imports: [RouterOutlet, PrivatePage, CKGenAppModule],
   templateUrl: './app.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './app.less'
 })
 export class AppComponent {
