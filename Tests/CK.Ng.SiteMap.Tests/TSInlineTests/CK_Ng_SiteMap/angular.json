@@ -3,7 +3,7 @@
   "version": 1,
   "cli": {
     "packageManager": "yarn",
-    "analytics": "7e9a006c-a9ac-4575-9d97-dac9197ec526"
+    "analytics": false
   },
   "newProjectRoot": "projects",
   "projects": {
@@ -30,7 +30,11 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "less",
             "assets": [
-              { "glob": "**/*", "input": "ck-gen/ts-assets" }, {
+              {
+                "glob": "**/*",
+                "input": "ck-gen/ts-assets"
+              },
+              {
                 "glob": "**/*",
                 "input": "public"
               }
