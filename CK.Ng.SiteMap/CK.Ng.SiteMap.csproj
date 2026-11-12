@@ -5,7 +5,7 @@
   <ItemGroup>
     <PackageReference Include="CK.DB.HWorkspace.Page" Version="3.0.0-0.cris-auth.1.ci.25" />
     <PackageReference Include="CK.SqlServer.Dapper" Version="18.0.0-0.cris-auth.1.ci.32" />
-    <PackageReference Include="CK.Ng.Cris.AspNet.Authentication" Version="3.0.0-0.cris-auth.1.ci.128" />
+    <PackageReference Include="CK.Ng.Cris.AspNet.Authentication" Version="3.0.0-0.cris-auth.1.ci.129" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CK.IO.Ng.SiteMap\CK.IO.Ng.SiteMap.csproj" />
