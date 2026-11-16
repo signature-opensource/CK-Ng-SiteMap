@@ -4,6 +4,6 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="CK.IO.Auth" Version="3.0.0-0.uc.0.ci.77" />
-    <PackageReference Include="CK.Cris.TypeScript" Version="3.0.0-0.uc.0.ci.148" />
+    <PackageReference Include="CK.Cris.TypeScript" Version="3.0.0-0.uc.0.ci.149" />
   </ItemGroup>
 </Project>
