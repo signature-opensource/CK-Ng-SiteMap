@@ -3,9 +3,9 @@
     <TargetFramework>net10.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="CK.DB.HWorkspace.Page" Version="3.0.0-0.uc.0.ci.37" />
-    <PackageReference Include="CK.SqlServer.Dapper" Version="18.0.0-0.uc.0.ci.42" />
-    <PackageReference Include="CK.Ng.Cris.AspNet.Authentication" Version="3.0.0-0.uc.0.ci.145" />
+    <PackageReference Include="CK.DB.HWorkspace.Page" Version="3.0.0-0.uc.0.ci.38" />
+    <PackageReference Include="CK.SqlServer.Dapper" Version="18.0.0-0.uc.0.ci.43" />
+    <PackageReference Include="CK.Ng.Cris.AspNet.Authentication" Version="3.0.0-0.uc.0.ci.147" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CK.IO.Ng.SiteMap\CK.IO.Ng.SiteMap.csproj" />
